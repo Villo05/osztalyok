@@ -26,3 +26,6 @@ const cica2 = {
 }
 
 const cat2 = new Cica(cica2,szuloElem);
+
+/* minden cica, ha oltást kap, akkor legyen tulajdonsága*/
+cat2.setObj("oltott")

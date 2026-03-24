@@ -5,4 +5,9 @@ img{
 .kartya{
     width: 300px;
     border: 1px solid black;
+    text-align: center;
+}
+
+.kartya button{
+    background-color: beige;
 }
