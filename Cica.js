@@ -5,21 +5,37 @@ export default class Cica{
     
     az adattag lehet privát vagy publikus*/ 
     #obj = {} /* privát */
-    
-    constructor(obj={kep,nev}, szuloElem){
+    #index=0;
+    constructor(obj={kep,nev},index, szuloElem){
         
         /*this.kep = obj.kep;
         this.nev = obj.nev;*/
         //this.obj = obj; /* publikus */ 
         //this.#obj = obj;
         //this.szuloElem = szuloElem; /* publikus */
+        this.#obj = obj;
+        this.szuloElem = szuloElem; 
+        this.#index = index;
         this.megjelenit();
+        this.esemenykezelo();
+    }
 
-        this.buttonElem = document.querySelector(".kartya:last-child button");
-        console.log(this.buttonElem);
-        this.buttonElem.addEventListener("click", function(event){
-            console.log(event.target);
-        })
+        esemenykezelo(){
+            this.buttonElem = document.querySelector(".kartya:last-child button");
+            console.log(this.buttonElem);
+            this.buttonElem.addEventListener("click", (event)=> {
+                console.log("event.target",event.target);
+                console.log("this",this);
+                this.sajatEsemeny();
+            })
+        }
+   
+
+    sajatEsemeny(){
+        console.log("sajatesemeny");
+        /* létrehozunk saját eseményt */
+        const e = new CustomEvent("kedvenc", {detail:this.#index})
+        window.dispatchEvent(e)
     }
 
     megjelenit(){

@@ -1,31 +1,18 @@
 /* jelenitsd meg a macskát az oldalon megjelenít metódus*/
 
-import Cica from "./Cica.js";
-import { megjelenit } from "./kartya.js";
-
-const cica={
-    kep:"kepek/cica.png",
-    nev:"Princess"
-}
+import { CICALISTA } from "./adat.js";
+import Cicak from "./Cicak.js";
 
 const szuloElem = document.querySelector(".tarolo");
+const kedvencElem = document.querySelector(".kedvenc");
 
-//megjelenit(cica,szuloElem);
+new Cicak(CICALISTA, szuloElem)
 
-const cat = new Cica(cica,szuloElem); /* példányosítom a Cica osztályt a példány neve "cat"*/
-console.log(cat);
-//cat.megjelenit();
-
-console.log(cat.szuloElem);
-console.log(cat.obj); /* az obj privát adattag, kívülről nem elérhető*/
-console.log(cat.getObj()); /* getterrel el tudom Olvasni az értéket*/
-
-const cica2 = {
-    kep:"kepek/cica1.jpg",
-    nev:"Gülü"
-}
-
-const cat2 = new Cica(cica2,szuloElem);
-
-/* minden cica, ha oltást kap, akkor legyen tulajdonsága*/
-cat2.setObj("oltott")
+const KEDVENCLISTA = [];
+/* a kiválasztottt cica adatait akarom itt megjeleníteni */ 
+window.addEventListener("kedvenc", function(event){
+    /* feliratkozom a saját eseményemre*/
+    console.log(event.detail);
+    KEDVENCLISTA.push(CICALISTA[event.detail]);
+    new Cicak(KEDVENCLISTA, kedvencElem)
+})
